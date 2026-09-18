@@ -46,7 +46,7 @@ public class Board {
         int linesCleared = 0;
         int writeRow = grid.length - 1;
 
-        for (int r = grid.length; r >= 0; r--) {
+        for (int r = grid.length - 1; r >= 0; r--) {
             Boolean rowIsFull = true;
             for (int c = 0; c < grid[0].length; c++) {
                 if (grid[r][c] == 0) {
