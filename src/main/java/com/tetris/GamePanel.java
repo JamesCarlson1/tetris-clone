@@ -53,11 +53,18 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     }
 
     public void tryMove(int dRow, int dCol) {
-        Tetromino candidate = new Tetromino(currentPiece.type, currentPiece.rotatiionIndex, currentPiece.row + dRow, currentPiece.col + dCol);
+        Tetromino candidate = new Tetromino(currentPiece.type, currentPiece.rotationIndex, currentPiece.row + dRow, currentPiece.col + dCol);
         if (board.isValidPosition(candidate)) {
             currentPiece = candidate;
             repaint();
         }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+    }
+    @Override
+    public void keyTyped(KeyEvent e) {
     }
 
 
