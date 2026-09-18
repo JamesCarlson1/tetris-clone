@@ -55,6 +55,7 @@ public class GamePanel extends JPanel implements ActionListener {
         if (board.isValidPosition(candidate)) {
             currentPiece = candidate;
         } else {
+            board.lockPiece(currentPiece);
             currentPiece = new Tetromino(currentPiece.type, currentPiece.rotationIndex, 0, currentPiece.col);
         }
         repaint();

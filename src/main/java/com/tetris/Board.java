@@ -33,7 +33,11 @@ public class Board {
 
     // Locks the piece in place on the board.
     public void lockPiece (Tetromino piece) {
-
+        for (int[] cell: piece.getCells()) {
+            int r = cell[0];
+            int c = cell[1];
+            grid[r][c] = 1;
+        }
     }
 
     // Clears the row if it is full.
