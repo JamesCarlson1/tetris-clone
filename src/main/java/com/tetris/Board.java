@@ -44,7 +44,7 @@ public class Board {
     public int clearFullLines() {
         int[][] newGrid = new int[grid.length][grid[0].length];
         int linesCleared = 0;
-        int writeRow = grid.length - 1;
+        int writeRow = 0;
 
         for (int r = 0; r < grid.length; r++) {
             Boolean rowIsFull = true;
