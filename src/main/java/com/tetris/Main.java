@@ -11,7 +11,7 @@ public class Main {
         GamePanel panel = new GamePanel(board, cellSize);
         JFrame frame = new JFrame();
 
-        panel.setCurrentPiece(new Tetromino(TetrominoType.T, 0, 0, 4));
+        panel.setCurrentPiece(new Tetromino(TetrominoType.randomType(), 0, 0, 3));
         frame.add(panel);
         frame.pack();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

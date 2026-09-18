@@ -17,6 +17,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     private Board board;
     private int cellSize;
     private Tetromino currentPiece;
+    private Timer timer;
+    private boolean gameOver = false;
 
     private final int delayMs = 500;
 
@@ -27,7 +29,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         int height = board.grid.length * cellSize;
         setPreferredSize(new Dimension(width, height));
 
-        Timer timer = new Timer(delayMs, this);
+        timer = new Timer(delayMs, this);
         timer.start();
 
         setFocusable(true);
@@ -100,6 +102,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
     @Override
     public void actionPerformed (ActionEvent e) {
+        if (gameOver) return;
+
         Tetromino candidate = new Tetromino(currentPiece.type, currentPiece.rotationIndex, currentPiece.row + 1, currentPiece.col);
         if (board.isValidPosition(candidate)) {
             currentPiece = candidate;
@@ -107,6 +111,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
             board.lockPiece(currentPiece);
             board.clearFullLines();
             currentPiece = new Tetromino(TetrominoType.randomType(), 0, 0, 4);
+            if (!board.isValidPosition(currentPiece)) {
+                gameOver = true;
+                timer.stop();
+            }
         }
         repaint();
     }
