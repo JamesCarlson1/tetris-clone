@@ -6,7 +6,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 
 // For timer.
-import java.util.Timer;
+import javax.swing.Timer;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -49,7 +49,8 @@ public class GamePanel extends JPanel implements ActionListener {
         }
     }
 
-    public ActionListener () {
+    @Override
+    public void actionPerformed (ActionEvent e) {
 
     }
 }
