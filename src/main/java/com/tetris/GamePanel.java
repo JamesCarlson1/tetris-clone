@@ -41,6 +41,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     }
 
     public void keyPressed (KeyEvent e) {
+        if (gameOver) return;
         switch (e.getKeyCode()) {
             case KeyEvent.VK_LEFT:
                 tryMove(0, -1);
