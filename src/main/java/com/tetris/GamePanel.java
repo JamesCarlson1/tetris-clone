@@ -38,7 +38,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         this.currentPiece = currentPiece; 
     }
 
-    public void keyPressed(KeyEvent e) {
+    public void keyPressed (KeyEvent e) {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_LEFT:
                 tryMove(0, -1);
@@ -49,10 +49,13 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
             case KeyEvent.VK_DOWN:
                 tryMove(1, 0);
                 break;
+            case KeyEvent.VK_UP:
+                tryRotate(1);
+                break;
         }
     }
 
-    public void tryMove(int dRow, int dCol) {
+    public void tryMove (int dRow, int dCol) {
         Tetromino candidate = new Tetromino(currentPiece.type, currentPiece.rotationIndex, currentPiece.row + dRow, currentPiece.col + dCol);
         if (board.isValidPosition(candidate)) {
             currentPiece = candidate;
@@ -60,17 +63,26 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         }
     }
 
+    public void tryRotate (int direction) {
+        int newRotationIndex = (currentPiece.rotationIndex + direction + 4) % 4; // The +4 has to be there in order to handle possible negative cases.
+        Tetromino candidate = new Tetromino(currentPiece.type, newRotationIndex, currentPiece.row, currentPiece.col);
+        if (board.isValidPosition(candidate)) {
+            currentPiece = candidate;
+            repaint();
+        }
+    }
+
     @Override
-    public void keyReleased(KeyEvent e) {
+    public void keyReleased (KeyEvent e) {
     }
     @Override
-    public void keyTyped(KeyEvent e) {
+    public void keyTyped (KeyEvent e) {
     }
 
 
 
     @Override
-    public void paintComponent(Graphics g) {
+    public void paintComponent (Graphics g) {
         super.paintComponent(g);
         for (int r = 0; r < board.grid.length; r++) {
             for (int c = 0; c < board.grid[0].length; c++) {

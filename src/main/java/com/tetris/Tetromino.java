@@ -13,7 +13,7 @@ public class Tetromino {
         this.col = col;
     }
 
-    public int[][] getCells () {
+    public int[][] getCells() {
         int[][] offsets = this.type.getOffsets(this.rotationIndex);
         int[][] cells = new int[4][2];
         for (int i = 0; i <= 3; i++) {

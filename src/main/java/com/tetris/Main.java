@@ -6,7 +6,7 @@ public class Main {
     private static final int cellSize = 25;
     private static final int rows = 20;
     private static final int cols = 10;
-    public static void main(String[] args) {
+    public static void main (String[] args) {
         Board board = new Board(rows, cols);
         GamePanel panel = new GamePanel(board, cellSize);
         JFrame frame = new JFrame();
