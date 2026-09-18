@@ -7,6 +7,12 @@ public enum TetrominoType {
         {{1, 1}, {1, 2}, {2, 1}, {2, 2}}, // rotation 1 (identical)
         {{1, 1}, {1, 2}, {2, 1}, {2, 2}}, // rotation 2 (identical)
         {{1, 1}, {1, 2}, {2, 1}, {2, 2}}  // rotation 3 (identical)
+    }), // Need comma in order to separate enum constants.
+    T(new int[][][] {
+        {{1, 1}, {1, 2}, {1, 3}, {2, 2}}, // rotation 0
+        {{1, 1}, {2, 1}, {2, 2}, {3, 1}}, // rotation 1
+        {{2, 2}, {3, 1}, {3, 2}, {3, 3}}, // rotation 2
+        {{1, 3}, {2, 2}, {2, 3}, {3, 3}}  // rotation 3
     });
 
 
