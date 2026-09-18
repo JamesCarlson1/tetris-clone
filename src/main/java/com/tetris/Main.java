@@ -3,31 +3,21 @@ package com.tetris;
 import javax.swing.JFrame;
 
 public class Main {
+    private static final int cellSize = 25;
+    private static final int rows = 20;
+    private static final int cols = 10;
     public static void main(String[] args) {
-
-        int[][] testGrid = new int[10][5];
-        Board board = new Board(testGrid);
-
-        Tetromino piece1 = new Tetromino(TetrominoType.T, 0, 0, 0);
-        System.out.println(board.isValidPosition(piece1));
-
-        Tetromino piece2 = new Tetromino(TetrominoType.T, 0, 0, -2);
-        System.out.println(board.isValidPosition(piece2));
-
-        Tetromino piece3 = new Tetromino(TetrominoType.T, 0, 3, 0);
-        System.out.println(board.isValidPosition(piece3));
-
-        testGrid[2][2] = 1;
-        Tetromino piece4 = new Tetromino(TetrominoType.T, 0, 0, 0);
-        System.out.println(board.isValidPosition(piece4));
-
+        Board board = new Board(rows, cols);
+        GamePanel panel = new GamePanel(board, cellSize);
         JFrame frame = new JFrame();
 
-        frame.add(new GamePanel(500, 500));
+        panel.setCurrentPiece(new Tetromino(TetrominoType.T, 0, 0, 4));
+        frame.add(panel);
         frame.pack();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
 
+        
         int rotationIndex = 0;
         int row = 3;
         int col = 5;

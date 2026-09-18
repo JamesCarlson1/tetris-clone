@@ -3,8 +3,8 @@ package com.tetris;
 public class Board {
     public int[][] grid;
 
-    public Board (int[][] board) {
-        this.grid = board;
+    public Board (int row, int col) {
+        this.grid = new int[row][col];
     }
 
     // Checks if the cell is free on the board.

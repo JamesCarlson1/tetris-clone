@@ -8,7 +8,7 @@ public class Tetromino {
 
     public Tetromino (TetrominoType type, int rotationIndex, int row, int col) {
         this.type = type;
-        this.rotationIndex = 0;
+        this.rotationIndex = rotationIndex;
         this.row = row;
         this.col = col;
     }
