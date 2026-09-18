@@ -16,15 +16,5 @@ public class Main {
         frame.pack();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
-
-        
-        int rotationIndex = 0;
-        int row = 3;
-        int col = 5;
-        Tetromino piece = new Tetromino(TetrominoType.T, rotationIndex, row, col);
-        int[][] cells = piece.getCells();
-        for (int i = 0; i < cells.length; i++) {
-            System.out.println(cells[i][0] + " " + cells[i][1]);
-        }
     }
 }
