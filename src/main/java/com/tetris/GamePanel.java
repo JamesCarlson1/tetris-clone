@@ -10,7 +10,10 @@ import javax.swing.Timer;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class GamePanel extends JPanel implements ActionListener {
+import java.awt.event.KeyListener;
+import java.awt.event.KeyEvent;
+
+public class GamePanel extends JPanel implements ActionListener, KeyListener {
     private Board board;
     private int cellSize;
     private Tetromino currentPiece;
@@ -26,11 +29,38 @@ public class GamePanel extends JPanel implements ActionListener {
 
         Timer timer = new Timer(delayMs, this);
         timer.start();
+
+        setFocusable(true);
+        addKeyListener(this);
     }
 
     public void setCurrentPiece (Tetromino currentPiece) {
         this.currentPiece = currentPiece; 
     }
+
+    public void keyPressed(KeyEvent e) {
+        switch (e.getKeyCode()) {
+            case KeyEvent.VK_LEFT:
+                tryMove(0, -1);
+                break;
+            case KeyEvent.VK_RIGHT:
+                tryMove(0, +1);
+                break;
+            case KeyEvent.VK_DOWN:
+                tryMove(1, 0);
+                break;
+        }
+    }
+
+    public void tryMove(int dRow, int dCol) {
+        Tetromino candidate = new Tetromino(currentPiece.type, currentPiece.rotatiionIndex, currentPiece.row + dRow, currentPiece.col + dCol);
+        if (board.isValidPosition(candidate)) {
+            currentPiece = candidate;
+            repaint();
+        }
+    }
+
+
 
     @Override
     public void paintComponent(Graphics g) {
@@ -56,7 +86,7 @@ public class GamePanel extends JPanel implements ActionListener {
             currentPiece = candidate;
         } else {
             board.lockPiece(currentPiece);
-            currentPiece = new Tetromino(TetrominoType.randomType(), currentPiece.rotationIndex, 0, 4);
+            currentPiece = new Tetromino(TetrominoType.randomType(), 0, 0, 4);
         }
         repaint();
     }
