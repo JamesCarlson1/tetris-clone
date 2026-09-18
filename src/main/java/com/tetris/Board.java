@@ -42,6 +42,27 @@ public class Board {
 
     // Clears the row if it is full.
     public int clearFullLines() {
-        return 5;
+        int[][] newGrid = new int[grid.length][grid[0].length];
+        int linesCleared = 0;
+        int writeRow = grid.length - 1;
+
+        for (int r = 0; r < grid.length; r++) {
+            Boolean rowIsFull = true;
+            for (int c = 0; c < grid[0].length; c++) {
+                if (grid[r][c] == 0) {
+                    rowIsFull = false;
+                    break;
+                }
+            }
+            if (rowIsFull) {
+                linesCleared++;
+            } else {
+                newGrid[writeRow] = grid[r];
+                writeRow--;
+            }
+        }
+        grid = newGrid;
+        return linesCleared;
+
     }
 }

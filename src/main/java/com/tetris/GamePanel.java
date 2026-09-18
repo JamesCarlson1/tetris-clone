@@ -93,6 +93,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
             currentPiece = candidate;
         } else {
             board.lockPiece(currentPiece);
+            board.clearFullLines();
             currentPiece = new Tetromino(TetrominoType.randomType(), 0, 0, 4);
         }
         repaint();
