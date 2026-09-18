@@ -51,6 +51,12 @@ public class GamePanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed (ActionEvent e) {
-
+        Tetromino candidate = new Tetromino(currentPiece.type, currentPiece.rotationIndex, currentPiece.row + 1, currentPiece.col);
+        if (board.isValidPosition(candidate)) {
+            currentPiece = candidate;
+        } else {
+            currentPiece = new Tetromino(currentPiece.type, currentPiece.rotationIndex, 0, currentPiece.col);
+        }
+        repaint();
     }
 }
