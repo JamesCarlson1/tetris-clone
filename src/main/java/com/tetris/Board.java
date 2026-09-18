@@ -44,9 +44,9 @@ public class Board {
     public int clearFullLines() {
         int[][] newGrid = new int[grid.length][grid[0].length];
         int linesCleared = 0;
-        int writeRow = 0;
+        int writeRow = grid.length - 1;
 
-        for (int r = 0; r < grid.length; r++) {
+        for (int r = grid.length; r >= 0; r--) {
             Boolean rowIsFull = true;
             for (int c = 0; c < grid[0].length; c++) {
                 if (grid[r][c] == 0) {
@@ -58,7 +58,7 @@ public class Board {
                 linesCleared++;
             } else {
                 newGrid[writeRow] = grid[r];
-                writeRow++;
+                writeRow--;
             }
         }
         grid = newGrid;
