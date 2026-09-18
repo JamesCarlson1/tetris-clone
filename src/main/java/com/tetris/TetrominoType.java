@@ -1,6 +1,6 @@
 package com.tetris;
 
-import java.util.Random;;
+import java.util.Random;
 
 public enum TetrominoType {
     // Defines the base rotation and the other rotation coords of blocks
@@ -26,9 +26,8 @@ public enum TetrominoType {
     private static Random random = new Random();
 
     public static TetrominoType randomType() {
-        TetrominoType[] allTypes = TetrominoType.values();
-        int index = random.nextInt(allTypes.length);
-        return allTypes[index];
+        TetrominoType[] allTypes = values();
+        return allTypes[random.nextInt(allTypes.length)];
     }
 
     public int[][] getOffsets (int rotationIndex) {
