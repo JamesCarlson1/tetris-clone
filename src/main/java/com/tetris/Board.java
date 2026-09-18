@@ -58,7 +58,7 @@ public class Board {
                 linesCleared++;
             } else {
                 newGrid[writeRow] = grid[r];
-                writeRow--;
+                writeRow++;
             }
         }
         grid = newGrid;
