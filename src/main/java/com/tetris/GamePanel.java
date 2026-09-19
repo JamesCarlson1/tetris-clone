@@ -95,14 +95,18 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
                     TetrominoType type = TetrominoType.values()[board.grid[r][c] - 1];
                     g.setColor(type.getColor());
                     g.fillRect(c * cellSize, r * cellSize, cellSize, cellSize);
+                    g.setColor(Color.BLACK);
+                    g.drawRect(c * cellSize, r * cellSize, cellSize, cellSize);
                 }
             }
         }
-        g.setColor(currentPiece.type.getColor());
         for (int[] cell: currentPiece.getCells()) {
             int r = cell[0];
             int c = cell[1];
+            g.setColor(currentPiece.type.getColor());
             g.fillRect(c * cellSize, r * cellSize, cellSize, cellSize);
+            g.setColor(Color.BLACK);
+            g.drawRect(c * cellSize, r * cellSize, cellSize, cellSize);
         }
     }
 
