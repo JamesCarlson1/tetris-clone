@@ -13,6 +13,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 
+import java.awt.Color;
+
 public class GamePanel extends JPanel implements ActionListener, KeyListener {
     private Board board;
     private int cellSize;
@@ -90,10 +92,13 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         for (int r = 0; r < board.grid.length; r++) {
             for (int c = 0; c < board.grid[0].length; c++) {
                 if (board.grid[r][c] != 0) {
+                    TetrominoType type = TetrominoType.values()[board.grid[r][c] - 1];
+                    g.setColor(type.getColor());
                     g.fillRect(c * cellSize, r * cellSize, cellSize, cellSize);
                 }
             }
         }
+        g.setColor(currentPiece.type.getColor());
         for (int[] cell: currentPiece.getCells()) {
             int r = cell[0];
             int c = cell[1];

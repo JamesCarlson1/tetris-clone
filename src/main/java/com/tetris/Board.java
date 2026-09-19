@@ -36,7 +36,7 @@ public class Board {
         for (int[] cell: piece.getCells()) {
             int r = cell[0];
             int c = cell[1];
-            grid[r][c] = 1;
+            grid[r][c] = piece.type.ordinal() + 1;
         }
     }
 
